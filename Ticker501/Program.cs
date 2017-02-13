@@ -9,6 +9,7 @@ namespace Ticker501
     class Program
     {
         static Account acct;
+        static Portfolio port;
         static void Main(string[] args)
         {
             menu1();
@@ -109,7 +110,27 @@ namespace Ticker501
                 }
                 else if (response.Equals("4"))
                 {
-                    //open protfolio
+                    Console.WriteLine("Select Portfolio");
+                    Console.Write(acct.GetPortfolioNames());
+                    response = Console.ReadLine();
+                    int index;
+                    if(Int32.TryParse(response, out index))
+                    {
+                        if(0<index && index<acct.GetNumberOfPortfolios() + 1)
+                        {
+                            port = acct.GetPortfolioReference(index);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Index Invalid. Press any key to continue.");
+                            Console.ReadKey();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid reponse. Press any key to continue.");
+                        Console.ReadKey();
+                    }
                 }
                 else if (response.Equals("5"))
                 {

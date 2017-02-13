@@ -55,5 +55,25 @@ namespace Ticker501
             return cashBalance;
         }
 
+        public string GetPortfolioNames()
+        {
+            string ret = "";
+            int c = 1;
+            foreach(Portfolio p in portfolios)
+            {
+                ret += c.ToString() + ") " + p.GetName() + "\n";
+            }
+            return ret;
+        }
+
+        public Portfolio GetPortfolioReference(int index)
+        {
+            return portfolios[index];
+        }
+
+        public int GetNumberOfPortfolios()
+        {
+            return portfolios.Count();
+        }
     }
 }

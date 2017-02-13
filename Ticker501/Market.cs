@@ -23,8 +23,8 @@ namespace Ticker501
         -----------------------------------------*/
         public void RefreshPrices()
         {
-            string text = System.IO.File.ReadAllText(@"Ticker.txt");
-            foreach(char ch in text)
+            string[] text = System.IO.File.ReadAllLines(@"Ticker.txt");
+            foreach(string line in text)
             {
                 //finish this
             }
