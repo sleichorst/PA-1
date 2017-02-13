@@ -26,13 +26,25 @@ namespace Ticker501
             string[] text = System.IO.File.ReadAllLines(@"Ticker.txt");
             foreach(string line in text)
             {
-                //finish this
+                string[] stock = line.Split('-');
+                string code = stock[0];
+                string name = stock[1];
+                string sPrice = stock[2];
+                decimal price = Decimal.Parse(sPrice.Substring(1, sPrice.Length - 1));
+
+                d[code] = price;
+                codes[code] = name;
             }
         }
 
         public decimal GetCurrentPrice(string company)
         {
             return d[company];
+        }
+
+        public string GetCompanyName(string code)
+        {
+            return codes[code];
         }
     }
 }
