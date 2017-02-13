@@ -15,6 +15,7 @@ namespace Ticker501
         public Market()
         {
             d = new Dictionary<string, decimal>();
+            codes = new Dictionary<string, string>();
             RefreshPrices();
         }
 
@@ -27,6 +28,10 @@ namespace Ticker501
             foreach(string line in text)
             {
                 string[] stock = line.Split('-');
+                if(stock.Length != 3)
+                {
+                    continue;
+                }
                 string code = stock[0];
                 string name = stock[1];
                 string sPrice = stock[2];

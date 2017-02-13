@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace Ticker501
 {
-    class Account
+    public class Account
     {
         private decimal cashBalance;
         private List<Portfolio> portfolios;
         private Portfolio port;
+        private Market m;
 
         public Account()
         {
             cashBalance = 0;
             portfolios = new List<Portfolio>();
+            m = new Market();
         }
 
         /*-------------------------------------

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Ticker501
 {
@@ -32,11 +34,21 @@ namespace Ticker501
                 }
                 else if (response.Equals("2"))
                 {
-                    //load account
+                    Console.WriteLine("Enter filename without a file extension:");
+                    response = Console.ReadLine();
+                    XmlSerializer x = new XmlSerializer(typeof(Account));
+                    FileStream fs = new FileStream(response + ".xml", FileMode.Open);
+                    acct = (Account)x.Deserialize(fs);
+                    menu2();
                 }
                 else if (response.Equals("3"))
                 {
-                    //save account
+                    Console.WriteLine("Enter desired filename without a file extension:");
+                    response = Console.ReadLine();
+                    XmlSerializer x = new XmlSerializer(typeof(Account));
+                    StreamWriter sw = new StreamWriter(response + ".xml");
+                    x.Serialize(sw, acct);
+                    sw.Close();
                 }
                 else if (response.Equals("4"))
                 {
