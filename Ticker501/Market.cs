@@ -42,6 +42,11 @@ namespace Ticker501
             }
         }
 
+        public override string ToString()
+        {
+            return String.Join("\n", System.IO.File.ReadAllLines(@"Ticker.txt"));
+        }
+
         public decimal GetCurrentPrice(string company)
         {
             return d[company];

@@ -182,7 +182,31 @@ namespace Ticker501
 
                 if(response.Equals("1"))
                 {
-                    //buy stocks
+                    Console.Clear();
+                    Console.Write(acct.GetMarketData());
+                    Console.WriteLine("Enter company code.");
+                    string code = Console.ReadLine();
+                    Console.WriteLine("How many shares?");
+                    response = Console.ReadLine();
+                    int number;
+                    if(Int32.TryParse(response, out number))
+                    {
+                        if(acct.BuyStock(code.ToUpper(), number))
+                        {
+                            Console.WriteLine("Purchase Successful. Press any key to continue.");
+                            Console.ReadKey();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Insufficient Funds. Press any key to continue.");
+                            Console.ReadKey();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid response. Press any key to continue;");
+                        Console.ReadKey();
+                    }
                 }
                 else if(response.Equals("2"))
                 {

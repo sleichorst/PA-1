@@ -88,5 +88,25 @@ namespace Ticker501
         {
             return port.GetName();
         }
+
+        public string GetMarketData()
+        {
+            return m.ToString();
+        }
+
+        public bool BuyStock(string code, int number)
+        {
+            //need to check if code is in market
+            if(m.GetCurrentPrice(code) * number <= cashBalance)
+            {
+                port.BuyStock(code, number, m.GetCurrentPrice(code));
+                cashBalance -= m.GetCurrentPrice(code) * number;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
