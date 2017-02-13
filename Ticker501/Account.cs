@@ -10,6 +10,7 @@ namespace Ticker501
     {
         private decimal cashBalance;
         private List<Portfolio> portfolios;
+        private Portfolio port;
 
         public Account()
         {
@@ -66,14 +67,24 @@ namespace Ticker501
             return ret;
         }
 
-        public Portfolio GetPortfolioReference(int index)
+        public void OpenPorfolio(int index)
         {
-            return portfolios[index];
+            port = portfolios[index];
         }
 
         public int GetNumberOfPortfolios()
         {
             return portfolios.Count();
+        }
+
+        public void AddNewPortfolio(string name)
+        {
+            portfolios.Add(new Portfolio(name));
+        }
+
+        public string GetCurrentPortfolioName()
+        {
+            return port.GetName();
         }
     }
 }

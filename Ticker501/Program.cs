@@ -9,7 +9,6 @@ namespace Ticker501
     class Program
     {
         static Account acct;
-        static Portfolio port;
         static void Main(string[] args)
         {
             menu1();
@@ -22,7 +21,8 @@ namespace Ticker501
                 Console.Clear();
                 Console.WriteLine("1) Create New Account.");
                 Console.WriteLine("2) Open Account.");
-                Console.WriteLine("3) Exit.");
+                Console.WriteLine("3) Save Account.");
+                Console.WriteLine("4) Exit.");
                 string response = Console.ReadLine();
 
                 if (response.Equals("1"))
@@ -35,6 +35,10 @@ namespace Ticker501
                     //load account
                 }
                 else if (response.Equals("3"))
+                {
+                    //save account
+                }
+                else if (response.Equals("4"))
                 {
                     Environment.Exit(0);
                 }
@@ -118,7 +122,7 @@ namespace Ticker501
                     {
                         if(0<index && index<acct.GetNumberOfPortfolios() + 1)
                         {
-                            port = acct.GetPortfolioReference(index);
+                            acct.OpenPorfolio(index);
                         }
                         else
                         {
@@ -131,10 +135,13 @@ namespace Ticker501
                         Console.WriteLine("Invalid reponse. Press any key to continue.");
                         Console.ReadKey();
                     }
+                    menu3();
                 }
                 else if (response.Equals("5"))
                 {
-                    //create new portfolio
+                    Console.WriteLine("Enter name for new portfolio:");
+                    response = Console.ReadLine();
+                    acct.AddNewPortfolio(response);
                 }
                 else if (response.Equals("6"))
                 {
@@ -148,6 +155,17 @@ namespace Ticker501
 
             }
 
+        }
+
+        static void menu3()
+        {
+            while(true)
+            {
+                Console.Clear();
+                Console.WriteLine("Current Portfolio: " + acct.GetCurrentPortfolioName());
+                Console.WriteLine("1) Buy Stocks.");
+                Console.WriteLine("2) Sell Stocks.");
+            }
         }
     }
 }
