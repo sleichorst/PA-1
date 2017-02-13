@@ -165,6 +165,26 @@ namespace Ticker501
                 Console.WriteLine("Current Portfolio: " + acct.GetCurrentPortfolioName());
                 Console.WriteLine("1) Buy Stocks.");
                 Console.WriteLine("2) Sell Stocks.");
+                Console.WriteLine("3) Close Portfolio.");
+                string response = Console.ReadLine();
+
+                if(response.Equals("1"))
+                {
+                    //buy stocks
+                }
+                else if(response.Equals("2"))
+                {
+                    //sell stocks
+                }
+                else if(response.Equals("3"))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid reponse. Press any key to continue.");
+                    Console.ReadKey();
+                }
             }
         }
     }

@@ -69,7 +69,7 @@ namespace Ticker501
 
         public void OpenPorfolio(int index)
         {
-            port = portfolios[index];
+            port = portfolios[index-1];
         }
 
         public int GetNumberOfPortfolios()
